@@ -1,3 +1,5 @@
+import { ConfigParser, ConfigSections } from "../config.ts";
+
 export async function action_init(path: string[]) {
 	await Deno.mkdir(path + "libs", { recursive: true });
 	await Deno.mkdir(path + "src", { recursive: true });
@@ -8,6 +10,16 @@ export async function action_init(path: string[]) {
 	await Deno.create(path + "src/main.cpp");
 
 	// write basic stuff into config, gitignore and main.cpp
-	Deno.writeTextFileSync(path + "config.c3pm", "entryPoint: src/main.cpp\nsrcDir: src/\n\nname: main");
+	var config: ConfigSections = {
+		"root": {
+			"entry_point": "src/main.cpp",
+			"src_dir": "src/",
+			"name": "main"
+		}
+	}
+	var config_parser = new ConfigParser("")
+	config_parser.config_sections = config;
+
+	Deno.writeTextFileSync(path + "config.c3pm", config_parser.gen());
 	Deno.writeTextFileSync(path + "src/main.cpp", "#include <iostream>\n\nint main(void) {\n\tstd::cout << \"Hello C++!\";\n\treturn 0;\n}\n");
 }

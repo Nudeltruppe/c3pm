@@ -1,0 +1,5 @@
+:root
+entry_point="src/main.cpp"
+src_dir="src/"
+name="main"
+

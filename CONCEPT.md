@@ -9,10 +9,10 @@
 
 # List of all valid stanzas
 
-    entryPoint: <path_to_file>
-    srcDir: <directory with all main files>
-    name: <name of the output binary>
-    depends: <github url to library>
+    entry_point=<path_to_file>
+    src_dir=<directory with all main files>
+    name=<name of the output binary>
+    depends=<github url to library>
 
 # Functionality (build)
 
