@@ -8,7 +8,7 @@ async function help(args: string[]) {
 		throw new Error("Expected no arguments!");
 	}
 
-	console.log(`> ${Object.keys(commands).join(", ")}`)
+	console.log(`> ${Object.keys(commands).join(", ")}`);
 }
 
 export const commands: { [key: string]: (args: string[]) => Promise<void> } = {
@@ -16,13 +16,13 @@ export const commands: { [key: string]: (args: string[]) => Promise<void> } = {
 	"init": action_init,
 	"install": action_install,
 	"run": action_run,
-	"help": help
-}
+	"help": help,
+};
 
 export async function on_command(args: string[]) {
 	if (args.length < 1) {
 		throw new Error("Expected at least1 argument!");
 	}
-	
+
 	await commands[args[0]](args.slice(1, args.length));
 }

@@ -14,12 +14,12 @@ export async function action_init(path: string[]) {
 		"root": {
 			"entry_point": "src/main.cpp",
 			"src_dir": "src/",
-			"name": "main"
-		}
-	}
-	var config_parser = new ConfigParser("")
+			"name": "main",
+		},
+	};
+	var config_parser = new ConfigParser("");
 	config_parser.config_sections = config;
 
 	Deno.writeTextFileSync(path + "config.c3pm", config_parser.gen());
-	Deno.writeTextFileSync(path + "src/main.cpp", "#include <iostream>\n\nint main(void) {\n\tstd::cout << \"Hello C++!\";\n\treturn 0;\n}\n");
+	Deno.writeTextFileSync(path + "src/main.cpp", '#include <iostream>\n\nint main(void) {\n\tstd::cout << "Hello C++!";\n\treturn 0;\n}\n');
 }
