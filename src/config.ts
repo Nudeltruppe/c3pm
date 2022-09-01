@@ -1,5 +1,5 @@
 export interface ConfigSections {
-	[key: string]: { [key: string]: object | string };
+	[key: string]: { [key: string]: any };
 }
 
 export class ConfigParser {
@@ -40,7 +40,7 @@ export class ConfigParser {
 		// log("config", this.gen());
 	}
 
-	get(key: string, section: string = "root"): object | string {
+	get(key: string, section: string = "root"): any {
 		if (this.config_sections[section] == null) {
 			throw new Error(`Section ${section} not found`);
 		}
