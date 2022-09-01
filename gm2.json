@@ -1,0 +1,13 @@
+{
+	"name": "c3pm",
+	"description": "C++ Package manager",
+	"author": "Nudeltruppe",
+	"version": "0.0.1",
+	"task_dir": "tasks",
+	"custom_header": "C3PM",
+	"variables": {
+		"install_path": "/usr/bin/",
+		"executable": "c3pm"
+	},
+	"non_silent": true
+}

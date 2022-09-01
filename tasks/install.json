@@ -1,0 +1,13 @@
+{
+	"name": "install",
+	"commands": [
+		"sudo cp ${executable}.bundle ${install_path}/${executable}"
+	],
+	"dependencies": [
+		"compile"
+	],
+	"run_after_task": [
+		"cleanup"
+	],
+	"allow_fail": false
+}
