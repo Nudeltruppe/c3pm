@@ -1,3 +1,3 @@
-import { parseArgs } from "./src/arg_parser/argParser.ts";
+import { on_command } from "./src/commands.ts";
 
-parseArgs(Deno.args)
+on_command(Deno.args);

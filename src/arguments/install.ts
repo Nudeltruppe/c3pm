@@ -1,2 +1,2 @@
-export function actionInstall(args: Array<string>) {
+export async function action_install(args: string[]) {
 }

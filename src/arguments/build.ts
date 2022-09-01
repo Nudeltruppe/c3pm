@@ -1,3 +1,3 @@
-export function actionBuild() {
+export async function action_build() {
     
 }

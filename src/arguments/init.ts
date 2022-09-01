@@ -1,4 +1,4 @@
-export async function actionInit(path: String) {
+export async function action_init(path: string[]) {
 	await Deno.mkdir(path + "libs", { recursive: true });
 	await Deno.mkdir(path + "src", { recursive: true });
 	await Deno.mkdir(path + "build", { recursive: true });
