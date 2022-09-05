@@ -8,6 +8,7 @@ export async function action_init(path: string[]) {
 	await Deno.create(path + "config.c3pm");
 	await Deno.create(path + ".gitignore");
 	await Deno.create(path + "src/main.cpp");
+	await Deno.create(path + "libs/packages.cfg");
 
 	// write basic stuff into config, gitignore and main.cpp
 	var config: ConfigSections = {

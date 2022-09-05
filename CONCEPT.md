@@ -12,7 +12,7 @@
     entry_point=<path_to_file>
     src_dir=<directory with all main files>
     name=<name of the output binary>
-    depends=<github url to library>
+    depends=<github url to library(separated by comma)> implement later
 
 # Functionality (build)
 

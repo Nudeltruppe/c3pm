@@ -3,8 +3,11 @@ export interface ConfigSections {
 }
 
 export class ConfigParser {
+	valid_stanzas: Array<string> = ["name", "entry_point", "src_dir"];
+	required_stanzas: Array<string> = ["name", "entry_point", "src_dir"];
 	config: string;
 
+	sections: Array<string> = [];
 	config_sections: ConfigSections = {};
 
 	constructor(config: string) {
@@ -17,6 +20,7 @@ export class ConfigParser {
 		for (var line of lines) {
 			if (line.startsWith(":")) {
 				section = line.substring(1).trim();
+				this.sections.push(section);
 			} else if (line.startsWith(";")) {
 				// Comment
 			} else {
@@ -30,10 +34,22 @@ export class ConfigParser {
 				}
 
 				try {
-					this.config_sections[section][parts[0].trim()] = JSON.parse(parts[1].trim()) as object;
+					let key = parts[0].trim();
+					if (this.valid_stanzas.includes(key)) {
+						this.config_sections[section][key] = JSON.parse(parts[1].trim()) as object;
+					} else {
+						throw new Error(`Invalid stanza key: "${key}"`);
+					}
 				} catch (e) {
 					this.config_sections[section][parts[0].trim()] = parts[1].trim();
 				}
+			}
+		}
+
+		// check if all required stanzas are found
+		for (let req of this.required_stanzas) {
+			if (this.config_sections[section][req] == null) {
+				throw new Error(`Stanza: "${req}" is required!`);
 			}
 		}
 
