@@ -33,7 +33,7 @@ export async function action_build() {
     */
 
 	// check wether file exists or not
-	exists("./config.c3pm").then((result) => result ? result : exitWithMessage("No config found :(\nAborting!"));
+	await exists("./config.c3pm").then((result) => result ? result : exitWithMessage("No config found :(\nAborting!"));
 
 	// parse file
 	let my_parser = new ConfigParser(Deno.readTextFileSync("./config.c3pm"));
@@ -64,7 +64,7 @@ export async function action_build() {
 
 				for (const file of Deno.readDirSync("./")) {
 					if (file.isFile && file.name.endsWith(".a")) { // valid library binary to link
-						Deno.copyFileSync("./" + file.name, root + "build/" + file_count.toString() + ".a");
+						Deno.copyFileSync("./" + file.name, root + "/build/" + file_count.toString() + ".a");
 						file_count += 1;
 					}
 				}
